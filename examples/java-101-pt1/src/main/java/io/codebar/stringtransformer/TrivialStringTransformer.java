@@ -9,6 +9,6 @@ package io.codebar.stringtransformer;
 public class TrivialStringTransformer implements StringTransformer {
     @Override
     public String transform(String source) {
-        return source;
+        return null;
     }
 }

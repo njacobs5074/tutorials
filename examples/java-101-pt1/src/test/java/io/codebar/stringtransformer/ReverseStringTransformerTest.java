@@ -23,29 +23,26 @@ public class ReverseStringTransformerTest {
 
     @Test
     public void testReverseStringForEmpty() throws Exception {
-        String original = "";
-        String reverse = transformer.transform(original);
-        assertEquals("Reverse doesn't match!", reverse, "");
+        doTest("", "");
     }
 
     @Test
     public void testReverseStringForSingleWord() throws Exception {
-        String original = "Hello";
-        String reverse = transformer.transform(original);
-        assertEquals("Reverse doesn't match!", reverse, "olleH");
+        doTest("Hello", "olleH");
     }
 
     @Test
     public void testReverseStringForMultipleWords() throws Exception {
-        String original = "Hello, Dave";
-        String reverse = transformer.transform(original);
-        assertEquals("Reverse doesn't match!", reverse, "evaD ,olleH");
+        doTest("Hello, Dave", "evaD ,olleH");
     }
 
     @Test
     public void testReverseStringForMultiByteWords() throws Exception {
-        String original = "今日は、デイブ";
-        String reverse = transformer.transform(original);
-        assertEquals("Reverse doesn't match!", reverse, "ブイデ、は日今");
+        doTest("今日は、デイブ", "ブイデ、は日今");
+    }
+
+    // Utility function that runs test and checks that results matched expected.
+    private void doTest(String source, String expected) throws Exception {
+        assertEquals("Reverse doesn't match!", expected, transformer.transform(source));
     }
 }
